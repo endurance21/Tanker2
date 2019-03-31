@@ -16,13 +16,7 @@ function controlPlayer(){
         tank1.angle = PI; 
     }
     if(keyPressed[Key.SPACE]){
-        if(tank1.bullets[0].isAvailable){
-            tank1.bullets[0].move(tank1.position.subtract(tank1.bullets[0].position));
-            tank1.bullets[0].move(new Vec2(tank1.width/2 , tank1.height/2)); 
-            tank1.bullets[0].move( new Vec2(-tank1.bullets[0].width/2, -tank1.bullets[0].height/2));
-            tank1.fireBullet(tank1.bullets[0]) ; 
-        }
-              
+       tank1.fireBullet();         
     }
 
 }

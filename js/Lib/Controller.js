@@ -9,20 +9,20 @@ const Key = {
 let keyPressed = [false, false, false, false, false];
 
 function handleKeyDown(e){
-    switch(e.key){
-        case 'w': case 'ArrowUp' :
+    switch(e.code){
+        case 'KeyW': case 'ArrowUp' :
             keyPressed[Key.UP] = true;
             break;
-        case 'a': case 'ArrowLeft' :
+        case 'KeyA': case 'ArrowLeft' :
             keyPressed[Key.LEFT] = true;
             break;
-        case 's': case 'ArrowDown' :
+        case 'KeyS': case 'ArrowDown' :
             keyPressed[Key.DOWN] = true;
             break;
-        case 'd': case 'ArrowRight' :
+        case 'KeyD': case 'ArrowRight' :
             keyPressed[Key.RIGHT] = true;
             break;
-        case ' ':
+        case 'Space':
             keyPressed[Key.SPACE] = true;
             break;
     }
@@ -30,20 +30,20 @@ function handleKeyDown(e){
 
 }
 function handleKeyUp(e){
-    switch(e.key){
-        case 'w': case 'ArrowUp' :
+    switch(e.code){
+        case 'KeyW': case 'ArrowUp' :
             keyPressed[Key.UP] = false;
             break;
-        case 'a': case 'ArrowLeft' :
+        case 'KeyA': case 'ArrowLeft' :
             keyPressed[Key.LEFT] = false;
             break;
-        case 's': case 'ArrowDown' :
+        case 'KeyS': case 'ArrowDown' :
             keyPressed[Key.DOWN] = false;
             break;
-        case 'd': case 'ArrowRight' :
+        case 'KeyD': case 'ArrowRight' :
             keyPressed[Key.RIGHT] = false;
             break;
-        case ' ': 
+        case 'Space': 
             keyPressed[Key.SPACE] = false;
             break;
         

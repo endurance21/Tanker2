@@ -10,7 +10,7 @@ class GameObject{
         this.anchorPoint = new Vec2(this.position.x + this.width/2, this.position.y + this.height/2); 
         this.counter = 0;
         this.directioChangeTimeout = Math.random()*40 + 60;
-        this.friction = 0.90 ;
+        this.friction = 1 ;
     }
     draw(ctx){
         ctx.save();

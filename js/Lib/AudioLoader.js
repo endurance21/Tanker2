@@ -22,8 +22,4 @@
       }
       return currentAudio;
    }
-} 
-  
- 
-
- 
+}  

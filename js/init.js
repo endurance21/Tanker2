@@ -31,4 +31,5 @@ let WorldSpace = {
 }
 
 const ImageLoader = new ImageLoaderClass();
-
+const audioloader = new AudioLoader();
+const blast = audioloader.load('res/sounds/blast.mp3');

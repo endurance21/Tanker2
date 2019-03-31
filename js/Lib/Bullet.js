@@ -1,8 +1,8 @@
 class Bullet extends GameObject{
     constructor(sprite, position, velocity){
-    super(sprite, position, velocity);
-    this.maxSpeed = BULLET_SPEED ;
-    this.isAvailable = true ;
+        super(sprite, position, velocity);
+        this.maxSpeed = BULLET_SPEED ;
+        this.isAvailable = true ;
     }
 
     fire(vector,angle){
@@ -11,12 +11,4 @@ class Bullet extends GameObject{
         this.velocity = this.velocity.scale(BULLET_SPEED);
         this.isAvailable = false;
     }
-
-    drawBullet(ctx){
-        
-        if(this.isAvailable==false){
-            this.draw(ctx);
-        }
-    }
-
 }

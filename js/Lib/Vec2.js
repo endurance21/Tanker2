@@ -51,9 +51,10 @@ Vec2.prototype.distance = function (vec) {
 	var y = this.y - vec.y;
 	return Math.sqrt( x * x + y * y );
 };
-//returns the angle from X axis as reference from -Pi to Pi
+//returns the angle from vertical Up axis as reference 
+//from 0 to 2 * PI in clockwise direction
 Vec2.prototype.getAngle = function () {
 	let angle = Math.atan2(this.y, this.x);
 	if(angle < 0) angle += 2 * Math.PI;
-	return angle;
+	return (angle);
 };
