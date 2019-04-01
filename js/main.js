@@ -1,44 +1,50 @@
 Game.update = ()=>{
-    tank1.update();
+    //update the player and enemies
+    player.update();
+    player.updateBullet();
     for(let i = 0; i<enemies.length; i++){
         enemies[i].update();
         enemies[i].updateBullet();
     }
-    tank1.updateBullet();
-
-    tank2.update();
-    tank2.updateBullet();
-    // tank1.bullets[0].update();
-    // if(!tank1.bullets[0].isInside(WorldSpace)){
-    //     tank1.bullets[0].isAvailable = true;
-    // }
-  
+    
+    //Check for collisions
     for(let i = 0; i<enemies.length; i++){
-        if(tank1.bullets[0].isInside(enemies[i]) && !tank1.bullets[0].isAvailable){
-            blast.play();
-            tank1.bullets[0].isAvailable = true;
+        //between players bullet and enemies
+        if(player.bullets[0].isInside(enemies[i]) && !player.bullets[0].isAvailable){
+            blastSound.play();
+            player.bullets[0].isAvailable = true;
             enemies[i].move(new Vec2(WIDTH, HEIGHT));
             enemies[i].velocity = new Vec2(0,0);
         }
-        if(enemies[i].bullets[0].isInside(tank1) && !enemies[i].bullets[0].isAvailable){
-            blast.play();
+        //between player and enemy bullets
+        if(enemies[i].bullets[0].isInside(player) && !enemies[i].bullets[0].isAvailable){
+            blastSound.play();
             enemies[i].bullets[0].isAvailable = true;
-            alert("Mar Gaya Madarchod. Isi liye paida kiye the");
-            Game.pause();
+            playerIsAlive = false;
             
         }
     }
-    controlPlayer();
+    //controlling the player
+    controlPlayer(player);
 }
+
+
 Game.draw = ()=>{
-    ctx1.clearRect(0,0,WIDTH,HEIGHT);
-    ctx2.clearRect(0,0,WIDTH,HEIGHT);
-    tank1.draw(ctx2);
+    //clearing the canvas each frame
+    tankCtx.clearRect(0,0,WIDTH,HEIGHT);
+    bulletCtx.clearRect(0,0,WIDTH,HEIGHT);
+
+    //rendering players and enemies
+    player.draw(tankCtx);
+    if(!player.bullets[0].isAvailable)
+        player.bullets[0].draw(bulletCtx); 
     for(let i = 0; i<enemies.length; i++){
-        enemies[i].draw(ctx2);
+        enemies[i].draw(tankCtx);
         if(!enemies[i].bullets[0].isAvailable)
-            enemies[i].bullets[0].draw(ctx1);
+            enemies[i].bullets[0].draw(tankCtx);
     }
-    if(!tank1.bullets[0].isAvailable)
-        tank1.bullets[0].draw(ctx1); 
+
+    //Ending the game
+    if(!playerIsAlive) 
+        Game.pause();
 }

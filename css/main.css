@@ -3,10 +3,20 @@
     padding : 0px;
     overflow: hidden;
 }
-#canvas2{
-    position:absolute;
-    left:0px;
-    top:0px;
-     z-index: -2;
-} 
+.gameLayers{
+    width : 100vw;
+    height : 100vh;
+}
+canvas{
+    position : absolute;
+}
+#backgroundCanvas{
+    z-index: 0;
+}
+#tankCanvas{
+    z-index: 1;
+}
+#bulletCanvas{
+    z-index: 2;
+}
  

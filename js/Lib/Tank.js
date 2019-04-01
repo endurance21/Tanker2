@@ -13,8 +13,7 @@ class Tank extends GameObject{
     }
 
     fireBullet(){
-      let soundFire = audioloader.load('res/sounds/fire.wav');
-     
+
       let direction = new Vec2(0,0);
       if(this.angle == 0){
         direction = Up ;
@@ -32,7 +31,7 @@ class Tank extends GameObject{
       let angle = this.angle;
       if(this.bullets[0].isAvailable){
         if(audioloader.allAudioLoaded)
-        soundFire.play();
+          fireSound.play();
         this.bullets[0].move(this.position.subtract(this.bullets[0].position));
         this.bullets[0].move(new Vec2(this.width/2 , this.height/2)); 
         this.bullets[0].move( new Vec2(-this.bullets[0].width/2, -this.bullets[0].height/2));
