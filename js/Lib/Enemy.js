@@ -21,6 +21,9 @@ class Enemy extends Tank{
         if(this.position.y + this.height >=HEIGHT || this.position.y <= 0){
             this.velocity.y = -this.velocity.y;
         }
+
+
+
         this.move(this.velocity);
     }
 }
