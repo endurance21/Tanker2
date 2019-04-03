@@ -19,4 +19,6 @@ canvas{
 #bulletCanvas{
     z-index: 2;
 }
- 
+#grassCanvas{
+    z-index: 3;
+}
