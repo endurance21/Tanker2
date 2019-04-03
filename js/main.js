@@ -8,17 +8,32 @@ Game.update = ()=>{
     }
 
     //Check for collisions
+
     for(let i = 0; i<enemies.length; i++){
+        for(let j = i + 1; j < enemies.length; j++){
+            let cData = RectangleCollision(enemies[i],enemies[j]);
+            if(cData.collided==true){
+                console.log(cData);
+                let swap = enemies[i].velocity;
+                enemies[i].velocity = enemies[j].velocity;
+                enemies[j].velocity = swap;
+                
+            }
+        }
+        cData = RectangleCollision(player, enemies[i]);
+        if(cData.collided){
+            enemies[i].move(new Vec2(0,0));
+        }
         //between players bullet and enemies
         if(player.bullets[0].isInside(enemies[i]) && !player.bullets[0].isAvailable){
-            blastSound.play();
+            //blastSound.play();
             player.bullets[0].isAvailable = true;
             enemies[i].move(new Vec2(WIDTH, HEIGHT));
             enemies[i].velocity = new Vec2(0,0);
         }
         //between player and enemy bullets
         if(enemies[i].bullets[0].isInside(player) && !enemies[i].bullets[0].isAvailable){
-            blastSound.play();
+            // blastSound.play();
             enemies[i].bullets[0].isAvailable = true;
             playerIsAlive = false;
 
@@ -45,6 +60,7 @@ Game.draw = ()=>{
     }
 
     //Ending the game
+
     if(!playerIsAlive)
         Game.pause();
 }
@@ -67,3 +83,4 @@ grassGrid.cell[Math.floor(Math.random()*7)][Math.floor(Math.random()*16)].value 
 }
 
 grassGrid.drawGrid(grassCtx);
+

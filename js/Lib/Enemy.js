@@ -12,6 +12,7 @@ class Enemy extends Tank{
             this.angle = (Direction[a].getAngle() + PI/2)%(2*PI);
             this.counter = 0;    
             this.fireBullet(); 
+  
         }
 
         if(this.position.x + this.width >= WIDTH || this.position.x <= 0){
@@ -21,6 +22,9 @@ class Enemy extends Tank{
         if(this.position.y + this.height >=HEIGHT || this.position.y <= 0){
             this.velocity.y = -this.velocity.y;
         }
+
+
+
         this.move(this.velocity);
     }
 }

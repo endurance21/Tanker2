@@ -34,7 +34,7 @@ let WorldSpace = {
 
 const ImageLoader = new ImageLoaderClass();
 const audioloader = new AudioLoader();
-const blastSound = audioloader.load('res/sounds/blast.mp3');
+//const destroySound = audioloader.load('res/sounds/destroy.mp3');
 const fireSound = audioloader.load('res/sounds/fire.wav');
 
 let playerIsAlive = true;
