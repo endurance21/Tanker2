@@ -21,6 +21,26 @@ ImageLoader.onEveryImageLoaded = () => {
         enemies[i].loadBullet(bulletImage);
     }
 
+    for(let i = 0; i<enemies.length; i++){
+        for(let j = i + 1; j < enemies.length; j++){
+            let cData = RectangleCollision(enemies[i],enemies[j]);
+            while(cData.collided==true){
+                cData = RectangleCollision(enemies[i],enemies[j]);
+                if(enemies[i].position.x <= enemies[j].position.x){
+                    enemies[i].move(new Vec2(-cData.collisionDistance.x, 0));
+                }
+                else{
+                    enemies[j].move(new Vec2(-cData.collisionDistance.x, 0));
+                }
+                if(enemies[i].position.y <= enemies[j].position.y){
+                    enemies[i].move(new Vec2(0,-cData.collisionDistance.y));
+                }
+                else{
+                    enemies[j].move(new Vec2(0,-cData.collisionDistance.y));
+                }  
+            }
+        }
+    }
     //Starting the game
     Game.start();   
 }
